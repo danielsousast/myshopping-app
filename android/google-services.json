@@ -1,0 +1,76 @@
+{
+  "project_info": {
+    "project_number": "34839364092",
+    "project_id": "lista-de-compras-b80b5",
+    "storage_bucket": "lista-de-compras-b80b5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:34839364092:android:670e590e753ad8585e7279",
+        "android_client_info": {
+          "package_name": "com.danielsousa.myshopping"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "34839364092-fdf3ot50fudk2d7nfnv7aef55qlp9uji.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.danielsousa.myshopping",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "34839364092-gp6ugs2efcbfmvon1nhq4cjdtm97288o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVy-vxGLYkelFkvZBG0GOPkoAn4PYxtqE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "34839364092-gp6ugs2efcbfmvon1nhq4cjdtm97288o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:34839364092:android:c0b849212cb59a435e7279",
+        "android_client_info": {
+          "package_name": "com.myshopping"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "34839364092-gp6ugs2efcbfmvon1nhq4cjdtm97288o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVy-vxGLYkelFkvZBG0GOPkoAn4PYxtqE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "34839364092-gp6ugs2efcbfmvon1nhq4cjdtm97288o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
