@@ -1,18 +1,18 @@
-import React from 'react';
+import React from "react";
 
-import { ButtonIcon } from '../ButtonIcon';
-import { Container, Info, Name, Path, Options } from './styles';
+import { ButtonIcon } from "../ButtonIcon";
+import { Container, Info, Name, Path, Options } from "./styles";
 
 export type FileProps = {
   name: string;
   path: string;
-}
+};
 
 type Props = {
   data: FileProps;
   onShow?: () => void;
   onDelete?: () => void;
-}
+};
 
 export function File({ data, onShow, onDelete }: Props) {
   return (
@@ -23,16 +23,9 @@ export function File({ data, onShow, onDelete }: Props) {
       </Info>
 
       <Options>
-        <ButtonIcon
-          icon="delete"
-          color="alert"
-          onPress={onDelete}
-        />
+        <ButtonIcon icon="delete" color="alert" onPress={onDelete} />
 
-        <ButtonIcon
-          icon="visibility"
-          onPress={onShow}
-        />
+        <ButtonIcon icon="visibility" onPress={onShow} />
       </Options>
     </Container>
   );

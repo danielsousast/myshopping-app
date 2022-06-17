@@ -1,19 +1,22 @@
-import React, { useState } from 'react';
-import * as ImagePicker from 'expo-image-picker';
+import React, { useState } from "react";
+import * as ImagePicker from "expo-image-picker";
+import storage from "@react-native-firebase/storage";
+import { Button } from "../../components/Button";
+import { Header } from "../../components/Header";
+import { Photo } from "../../components/Photo";
 
-import { Button } from '../../components/Button';
-import { Header } from '../../components/Header';
-import { Photo } from '../../components/Photo';
-
-import { Container, Content, Progress, Transferred } from './styles';
+import { Container, Content, Progress, Transferred } from "./styles";
+import { Alert } from "react-native";
 
 export function Upload() {
-  const [image, setImage] = useState('');
+  const [image, setImage] = useState("");
+  const [bytesTransferred, setBytesTransferred] = useState("");
+  const [progress, setProgress] = useState("0");
 
   async function handlePickImage() {
     const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
 
-    if (status == 'granted') {
+    if (status == "granted") {
       const result = await ImagePicker.launchImageLibraryAsync({
         mediaTypes: ImagePicker.MediaTypeOptions.Images,
         aspect: [4, 4],
@@ -24,27 +27,38 @@ export function Upload() {
         setImage(result.uri);
       }
     }
-  };
+  }
+
+  async function handleUpload() {
+    const fileName = new Date().getTime();
+    const reference = storage().ref(`/images/${fileName}`);
+    const uploadTask = reference.putFile(image);
+
+    uploadTask.on("state_changed", (snapshot) => {
+      const percent = (
+        (snapshot.bytesTransferred / snapshot.totalBytes) *
+        100
+      ).toFixed(0);
+      setProgress(percent);
+      setBytesTransferred(
+        `${snapshot.bytesTransferred} transferido de ${snapshot.totalBytes}`
+      );
+    });
+
+    uploadTask.then(async () => {
+      const imageUrl = await reference.getDownloadURL();
+      Alert.alert("Sucesso", "Imagem enviada com sucesso");
+    });
+  }
 
   return (
     <Container>
       <Header title="Lista de compras" />
-
       <Content>
         <Photo uri={image} onPress={handlePickImage} />
-
-        <Button
-          title="Fazer upload"
-          onPress={() => { }}
-        />
-
-        <Progress>
-          0%
-        </Progress>
-
-        <Transferred>
-          0 de 100 bytes transferido
-        </Transferred>
+        <Button title="Fazer upload" onPress={handleUpload} />
+        <Progress>{progress}%</Progress>
+        <Transferred>{bytesTransferred}</Transferred>
       </Content>
     </Container>
   );
